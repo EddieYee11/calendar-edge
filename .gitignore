@@ -1,0 +1,19 @@
+node_modules/
+dist/
+build/
+test-results/
+.DS_Store
+.cache/
+.codex-home/
+native/CalendarEdge/.build/
+native/CalendarEdge/.swiftpm/
+
+# Internal planning / handoff docs
+HANDOVER.md
+task_plan.md
+findings.md
+progress.md
+calendar-launcher-solution.md
+
+# Logs
+*.log

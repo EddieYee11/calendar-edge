@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+    <key>CFBundleExecutable</key>
+    <string>CalendarEdge</string>
+    <key>CFBundleIdentifier</key>
+    <string>local.codex.calendar-edge</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>CalendarEdge</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>0.1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSUIElement</key>
+    <true/>
+    <key>NSAppleEventsUsageDescription</key>
+    <string>CalendarEdge needs Automation access so clicking an event can reveal it in Apple Calendar.</string>
+    <key>NSCalendarsFullAccessUsageDescription</key>
+    <string>CalendarEdge needs access to show your upcoming calendar events in the side panel.</string>
+    <key>NSCalendarsUsageDescription</key>
+    <string>CalendarEdge needs access to show your upcoming calendar events in the side panel.</string>
+    <key>NSRemindersFullAccessUsageDescription</key>
+    <string>CalendarEdge needs access to show and complete your Apple Reminders in the side panel.</string>
+    <key>NSRemindersUsageDescription</key>
+    <string>CalendarEdge needs access to show and complete your Apple Reminders in the side panel.</string>
+</dict>
+</plist>

@@ -1,0 +1,20 @@
+{
+  "name": "calendar-edge",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A SlidePad-style macOS side panel for Calendar and Reminders built with AppKit, WKWebView, and EventKit.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10"
+  }
+}
