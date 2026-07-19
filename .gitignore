@@ -5,6 +5,9 @@ test-results/
 .DS_Store
 .cache/
 .codex-home/
+/.agent/
+/.zcode/
+/backups/
 native/CalendarEdge/.build/
 native/CalendarEdge/.swiftpm/
 

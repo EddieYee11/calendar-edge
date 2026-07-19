@@ -1,6 +1,6 @@
-# CalendarEdge
+# CalendarEdge（应用显示名：Edgee）
 
-一个更轻量、更私人定制的 SlidePad 替代方案。
+一个更轻量、更私人定制的 SlidePad 替代方案。应用安装后显示为 **Edgee**（Edge + Ease + Calendar，「在边缘，遇见时间的秩序」），仓库与内部标识仍沿用 CalendarEdge。
 
 CalendarEdge 是一个 macOS 侧边滑出日历面板：当鼠标停留在屏幕右侧边缘时，面板会从右侧滑入，展示今日日程、接下来几天的安排，以及未完成的提醒事项，帮助你快速回答一个问题：
 
@@ -32,9 +32,13 @@ CalendarEdge 是一个 macOS 侧边滑出日历面板：当鼠标停留在屏幕
 - 屏幕右侧边缘悬停触发面板
 - 右侧滑入 / 自动收起
 - 展示今日日程、下一件事、未来几天概览
+- 提供 25 分钟轻量番茄钟，时间到后通过系统通知提醒
+- 提供独立完整月历页，支持翻月与按日期查看日程
 - 展示未完成提醒事项，并支持勾选完成
 - 点击事项后跳回 Calendar / Reminders
 - 识别会议链接并支持直接加入
+- 支持深浅色模式切换
+- 支持通过 `Send to Hermes` Shortcut 把自然语言快速发给 Hermes
 - 使用 macOS 原生 `EventKit` 读取 Calendar / Reminders 数据
 
 ## 技术方案
@@ -93,6 +97,10 @@ open -na ~/Applications/CalendarEdge.app
 
 启动后，把鼠标移到屏幕最右侧边缘并短暂停留，即可唤出面板。
 
+如果你也想启用 Hermes 快捷输入，需要先按文档创建一个名为 `Send to Hermes` 的 Shortcut：
+
+- [docs/send-to-hermes-shortcut.md](docs/send-to-hermes-shortcut.md)
+
 ## 权限说明
 
 应用可能会请求以下权限：
@@ -108,7 +116,8 @@ open -na ~/Applications/CalendarEdge.app
 - 仅支持 macOS
 - 暂无开机自启
 - 暂无菜单栏入口
-- 暂未实现深浅色主题切换
+- Hermes 快捷输入依赖你自己先配置 `Send to Hermes` Shortcut
+- 番茄钟不做历史统计，退出 App 后不会恢复未完成计时
 - 仓库中仍保留部分历史实验代码，后续会继续整理
 
 ## 为什么开源

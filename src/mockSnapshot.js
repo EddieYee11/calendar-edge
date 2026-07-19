@@ -4,6 +4,13 @@ function isoAt(base, hour, minute = 0) {
   return date.toISOString();
 }
 
+const CAL_TITLE_TO_ID = {
+  工作: 'cal-work',
+  个人: 'cal-personal',
+  健康: 'cal-health',
+  中国节假日: 'cal-holiday'
+};
+
 export function createMockSnapshot() {
   const now = new Date();
   now.setHours(14, 12, 0, 0);
@@ -17,12 +24,32 @@ export function createMockSnapshot() {
   const day3 = new Date(now);
   day3.setDate(day3.getDate() + 3);
 
-  return {
+  const day10 = new Date(now);
+  day10.setDate(day10.getDate() + 10);
+
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  const gridStart = new Date(monthStart);
+  gridStart.setDate(monthStart.getDate() - ((monthStart.getDay() + 6) % 7));
+  const gridEnd = new Date(gridStart);
+  gridEnd.setDate(gridStart.getDate() + 42);
+
+  const snapshot = {
     fetchedAt: new Date().toISOString(),
+    calendarRange: {
+      anchorMonth: monthStart.toISOString(),
+      startsAt: gridStart.toISOString(),
+      endsAt: gridEnd.toISOString()
+    },
     permissions: {
       calendar: { granted: true, message: '' },
       reminders: { granted: true, message: '' }
     },
+    calendars: [
+      { identifier: 'cal-work', title: '工作', color: '#e59373', isDefault: true, allowsModifications: true },
+      { identifier: 'cal-personal', title: '个人', color: '#7d8a76', isDefault: false, allowsModifications: true },
+      { identifier: 'cal-health', title: '健康', color: '#8ab0d1', isDefault: false, allowsModifications: true },
+      { identifier: 'cal-holiday', title: '中国节假日', color: '#b0413e', isDefault: false, allowsModifications: false }
+    ],
     events: [
       {
         identifier: 'event-1',
@@ -46,7 +73,8 @@ export function createMockSnapshot() {
         endAt: isoAt(now, 9, 45),
         location: 'Zoom',
         joinURL: 'https://meet.zoom.us/j/123',
-        isAllDay: false
+        isAllDay: false,
+        hasRecurrence: true
       },
       {
         identifier: 'event-3',
@@ -58,7 +86,8 @@ export function createMockSnapshot() {
         endAt: isoAt(now, 15, 0),
         location: '',
         joinURL: 'https://meet.feishu.cn/example',
-        isAllDay: false
+        isAllDay: false,
+        notes: '重点看侧滑动画与快捷键冲突。\n上次遗留:图标导出流程。'
       },
       {
         identifier: 'event-4',
@@ -68,6 +97,78 @@ export function createMockSnapshot() {
         calendarColor: '#e59373',
         startAt: isoAt(now, 15, 30),
         endAt: isoAt(now, 16, 0),
+        location: '',
+        joinURL: '',
+        isAllDay: false
+      },
+      {
+        identifier: 'event-10',
+        externalIdentifier: 'event-ext-10',
+        title: '客户电话回访',
+        calendarTitle: '工作',
+        calendarColor: '#e59373',
+        startAt: isoAt(now, 15, 45),
+        endAt: isoAt(now, 16, 30),
+        location: '',
+        joinURL: '',
+        isAllDay: false
+      },
+      {
+        identifier: 'event-11',
+        externalIdentifier: 'event-ext-11',
+        title: 'DDL 品牌视频交片 !高',
+        calendarTitle: '工作',
+        calendarColor: '#e59373',
+        startAt: isoAt(tomorrow, 16, 0),
+        endAt: isoAt(tomorrow, 17, 0),
+        location: '',
+        joinURL: '',
+        isAllDay: false
+      },
+      {
+        identifier: 'event-12',
+        externalIdentifier: 'event-ext-12',
+        title: '!中 暖场视频重排',
+        calendarTitle: '工作',
+        calendarColor: '#e59373',
+        startAt: isoAt(tomorrow, 14, 0),
+        endAt: isoAt(tomorrow, 15, 0),
+        location: '',
+        joinURL: '',
+        isAllDay: false
+      },
+      {
+        identifier: 'event-13',
+        externalIdentifier: 'event-ext-13',
+        title: '!低 订阅到期提醒 GPT',
+        calendarTitle: '生活',
+        calendarColor: '#94b57f',
+        startAt: isoAt(day2, 9, 0),
+        endAt: isoAt(day2, 9, 30),
+        location: '',
+        joinURL: '',
+        isAllDay: false
+      },
+      {
+        identifier: 'event-14',
+        externalIdentifier: 'event-ext-14',
+        title: '【deadline】明星专访 V27 交付',
+        calendarTitle: '工作',
+        calendarColor: '#e59373',
+        startAt: isoAt(day3, 10, 0),
+        endAt: isoAt(day3, 11, 0),
+        location: '',
+        joinURL: '',
+        isAllDay: false
+      },
+      {
+        identifier: 'event-15',
+        externalIdentifier: 'event-ext-15',
+        title: '【deadline】官网上线',
+        calendarTitle: '工作',
+        calendarColor: '#e59373',
+        startAt: isoAt(day10, 10, 0),
+        endAt: isoAt(day10, 11, 0),
         location: '',
         joinURL: '',
         isAllDay: false
@@ -131,6 +232,18 @@ export function createMockSnapshot() {
         location: '',
         joinURL: '',
         isAllDay: false
+      },
+      {
+        identifier: 'event-16',
+        externalIdentifier: 'event-ext-16',
+        title: '建军节',
+        calendarTitle: '中国节假日',
+        calendarColor: '#b0413e',
+        startAt: isoAt(day3, 0, 0),
+        endAt: isoAt(day3, 23, 59),
+        location: '',
+        joinURL: '',
+        isAllDay: true
       }
     ],
     reminders: [
@@ -191,4 +304,13 @@ export function createMockSnapshot() {
       }
     ]
   };
+
+  snapshot.events = snapshot.events.map((event) => ({
+    notes: null,
+    hasRecurrence: false,
+    calendarIdentifier: CAL_TITLE_TO_ID[event.calendarTitle] || '',
+    ...event
+  }));
+
+  return snapshot;
 }

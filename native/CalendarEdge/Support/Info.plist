@@ -4,14 +4,18 @@
 <dict>
     <key>CFBundleDevelopmentRegion</key>
     <string>en</string>
+    <key>CFBundleDisplayName</key>
+    <string>Edgee</string>
     <key>CFBundleExecutable</key>
     <string>CalendarEdge</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
     <key>CFBundleIdentifier</key>
     <string>local.codex.calendar-edge</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>CalendarEdge</string>
+    <string>Edgee</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
@@ -21,14 +25,14 @@
     <key>LSUIElement</key>
     <true/>
     <key>NSAppleEventsUsageDescription</key>
-    <string>CalendarEdge needs Automation access so clicking an event can reveal it in Apple Calendar.</string>
+    <string>Edgee 需要自动化权限，点击日程时可跳转到 Apple 日历定位该事件。</string>
     <key>NSCalendarsFullAccessUsageDescription</key>
-    <string>CalendarEdge needs access to show your upcoming calendar events in the side panel.</string>
+    <string>Edgee 需要日历权限，用于在面板中展示与创建你的日程。</string>
     <key>NSCalendarsUsageDescription</key>
-    <string>CalendarEdge needs access to show your upcoming calendar events in the side panel.</string>
+    <string>Edgee 需要日历权限，用于在面板中展示与创建你的日程。</string>
     <key>NSRemindersFullAccessUsageDescription</key>
-    <string>CalendarEdge needs access to show and complete your Apple Reminders in the side panel.</string>
+    <string>Edgee 需要提醒事项权限，用于展示、勾选与添加你的待办。</string>
     <key>NSRemindersUsageDescription</key>
-    <string>CalendarEdge needs access to show and complete your Apple Reminders in the side panel.</string>
+    <string>Edgee 需要提醒事项权限，用于展示、勾选与添加你的待办。</string>
 </dict>
 </plist>
